@@ -1,17 +1,26 @@
 name: github actions demo
-on : push
+
+on: 
+  push
+
 jobs:
-Explore-github -actions:
-runs-on : ubuntu-latest
-steps:
-name: print the triggering event
-run : echo"the job is triggered by ${{github.event_name}}"
-name: print the OS runner
-run: echo"the os of the runner is ${{runner.os}}"
-name : check out repo code action
-uses : actions/checkout@v4
-run : echo "cloning the ${{github,repository}} repo"
-name: print the name of the branch
-run: echo "the name of the branch is ${{github.ref}}"
-name : list files in the repo
-run: is ${{github.workspace}}
+  explore-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print the triggering event
+        run: echo "The job is triggered by ${{ github.event_name }}"
+
+      - name: print the OS runner
+        run: echo "The OS of the runner is ${{ runner.os }}"
+
+      - name: check out repo code action
+        uses: actions/checkout@v4
+
+      - name: clone the repository
+        run: echo "Cloning the ${{ github.repository }} repo"
+
+      - name: print the name of the branch
+        run: echo "The name of the branch is ${{ github.ref }}"
+
+      - name: list files in the repo
+        run: ls ${{ github.workspace }}
